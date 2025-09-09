@@ -1,14 +1,13 @@
-from flask import Flask, render_template
+from flask import Flask
 
+# Создаем объект приложения Flask
 app = Flask(__name__)
 
+# Определяем маршрут и привязываем его к функции
 @app.route('/')
-def index():
-    return render_template('index.html')
+def hello():
+    return "Hello, Flask!"
 
-@app.route('/about')
-def about():
-    return render_template('about.html')
-
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=5000)
+# Запуск приложения
+if __name__ == "__main__":
+    app.run(debug=True)
