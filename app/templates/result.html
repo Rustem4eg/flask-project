@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submission Result</title>
+    <title>Результаты</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1>🎉 Thank You, <strong>{{ name }}</strong>! 🎉</h1>
+    <h1>🎉 Спасибо, <strong>{{ name }}</strong>! 🎉</h1>
     
-    <p>We have sent a confirmation to <strong>{{ email }}</strong>.</p>
-    <p>Your favorite color is: 
+    <p>Отправили на <strong>{{ email }}</strong>.</p>
+    <p>Твой любимый цвет: 
         <span class="color-preview-result" style="background-color: {{ color or '#cccccc' }};">
             {{ color or 'не указан' }}
         </span>.
     </p>
-    <p>Your profession is: <strong>{{ profession }}</strong>.</p>
-    <p>Your hobbies: <strong>{{ hobbies | join(', ') if hobbies else 'none' }}</strong>.</p>
-    <p>Your level: <strong>{{ level }}</strong>.</p>
+    <p>Твоя профессия: <strong>{{ profession }}</strong>.</p>
+    <p>Твое хобби: <strong>{{ hobbies | join(', ') if hobbies else 'none' }}</strong>.</p>
+    <p>Твой уровень владения ПК: <strong>{{ level }}</strong>.</p>
 
     <blockquote class="joke-box">
-        😄 <strong>Random Joke for You:</strong><br>
+        😄 <strong>Случайная шутка про татар:</strong><br>
         {{ joke }}
     </blockquote>
 
-    <a href="/" class="back-link">🔙 Go back to form</a>
+    <a href="/" class="back-link">🔙 Вернуться на зполнение формы</a>
 
     <style>
         .joke-box {
@@ -40,14 +40,14 @@
             display: inline-block;
             margin-top: 20px;
             padding: 10px 20px;
-            background-color: #ff69b4;
+            background-color: #7669ff;
             color: white;
             text-decoration: none;
             border-radius: 25px;
             font-weight: bold;
         }
         .back-link:hover {
-            background-color: #ff1493;
+            background-color: #7669ff;
             transform: scale(1.1);
             transition: 0.3s;
         }

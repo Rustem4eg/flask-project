@@ -1,54 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Funny Form</title>
+    <title>Веселая форма</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1 class="funny-title">😄 Enter Your Details! 🦄</h1>
+    <h1 class="funny-title">😄 Заполни форму, вечельчак! 😄</h1>
 
     <form action="/submit" method="POST" class="funny-form">
-        <label for="name">Your Super Cool Name:</label>
+        <label for="name">Твое прикольное имя:</label>
         <input type="text" id="name" name="name" required><br><br>
 
-        <label for="email">Your Awesome Email:</label>
+        <label for="email">Твоя классная электронная почта:</label>
         <input type="email" id="email" name="email" required><br><br>
 
-        <label for="color">Your Favorite Color:</label>
+        <label for="color">Твой любимый цвет:</label>
         <input type="color" id="color" name="color" value="#ff69b4">
         <div id="color-preview" class="color-preview"></div><br><br>
 
-        <label for="profession">Your Profession:</label>
+        <label for="profession">Твоя профессия:</label>
         <select id="profession" name="profession" class="funny-select">
-            <option value="developer">Developer 🖥️</option>
-            <option value="designer">Designer 🎨</option>
-            <option value="manager">Manager 📊</option>
-            <option value="student">Student 🎓</option>
+            <option value="Программист-доярка">Программист-доярка</option>
+            <option value="Красавчик-дизайнер">Красавчик-дизайнер</option>
+            <option value="Нефтяник-олигарх">Нефтяник-олигарх</option>
+            <option value="Бездельник-весельчак">Бездельник-весельчак</option>
         </select><br><br>
 
-        <p>Your Hobbies:</p>
+        <p>Твои хобби:</p>
         <label class="funny-checkbox">
-            <input type="checkbox" name="hobbies" value="books"> 📚 Books
+            <input type="checkbox" name="hobbies" value="танцевать"> Танцевать
         </label><br>
         <label class="funny-checkbox">
-            <input type="checkbox" name="hobbies" value="sports"> ⚽ Sports
+            <input type="checkbox" name="hobbies" value="пить пивко"> Пить пивко
         </label><br>
         <label class="funny-checkbox">
-            <input type="checkbox" name="hobbies" value="games"> 🎮 Games
+            <input type="checkbox" name="hobbies" value="играть в компьютерные игры"> Играть в компьтерные игры
         </label><br><br>
 
-        <p>Your Level:</p>
+        <p>Твой уровень владения ПК:</p>
         <label class="funny-radio">
-            <input type="radio" name="level" value="beginner" checked> 🐣 Beginner
+            <input type="radio" name="level" value="Чайник" checked> 🐣 Чайник
         </label><br>
         <label class="funny-radio">
-            <input type="radio" name="level" value="advanced"> 🚀 Advanced
+            <input type="radio" name="level" value="Профик"> 🚀 Профик
         </label><br><br>
 
-        <button type="submit" class="funny-button">🚀 Let's Go!</button>
-        <button type="button" class="surprise-button" onclick="showSurprise()">🎁 Нажми меня!</button>
+        <button type="submit" class="funny-button">🚀 Жмякай, когда все заполнил!</button>
+        <button type="button" class="surprise-button" onclick="showSurprise()">🎁 Нажми меня, если не боишься!</button>
         <div id="surprise-message" class="surprise-message"></div>
     </form>
 
@@ -68,11 +68,11 @@
         // Функция для кнопки-сюрприза
         function showSurprise() {
             const msg = document.getElementById('surprise-message');
-            msg.textContent = "🎉 Ты нашёл секретную кнопку! Поздравляем! 🎊";
+            msg.textContent = "🎉 Ты нашёл секретную кнопку, смельчак! Молодцом!";
             msg.style.display = "block";
             msg.style.animation = "fadeIn 1s ease-in-out";
 
-            // Убегающая кнопка (по желанию)
+            // Убегающая кнопка
             const btn = event.target;
             btn.style.position = "relative";
             btn.style.left = Math.random() * 200 - 100 + "px";
