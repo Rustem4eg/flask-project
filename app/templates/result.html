@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>🎉 Thank You, <strong>{{ name }}</strong>! 🎉</h1>
+    
+    <p>We have sent a confirmation to <strong>{{ email }}</strong>.</p>
+    <p>Your favorite color is: 
+        <span class="color-preview-result" style="background-color: {{ color or '#cccccc' }};">
+            {{ color or 'не указан' }}
+        </span>.
+    </p>
+    <p>Your profession is: <strong>{{ profession }}</strong>.</p>
+    <p>Your hobbies: <strong>{{ hobbies | join(', ') if hobbies else 'none' }}</strong>.</p>
+    <p>Your level: <strong>{{ level }}</strong>.</p>
+
+    <blockquote class="joke-box">
+        😄 <strong>Random Joke for You:</strong><br>
+        {{ joke }}
+    </blockquote>
+
+    <a href="/" class="back-link">🔙 Go back to form</a>
+
+    <style>
+        .joke-box {
+            background-color: #fffacd;
+            padding: 20px;
+            margin: 30px auto;
+            border-radius: 15px;
+            border-left: 5px solid #ffa500;
+            max-width: 600px;
+            font-style: italic;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff69b4;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            background-color: #ff1493;
+            transform: scale(1.1);
+            transition: 0.3s;
+        }
+
+        /* Стиль для превью цвета — БЕЗ ОШИБОК */
+        .color-preview-result {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            min-width: 80px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+    </style>
+</body>
+</html>

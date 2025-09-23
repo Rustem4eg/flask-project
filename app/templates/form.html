@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funny Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1 class="funny-title">😄 Enter Your Details! 🦄</h1>
+
+    <form action="/submit" method="POST" class="funny-form">
+        <label for="name">Your Super Cool Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Your Awesome Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="color">Your Favorite Color:</label>
+        <input type="color" id="color" name="color" value="#ff69b4">
+        <div id="color-preview" class="color-preview"></div><br><br>
+
+        <label for="profession">Your Profession:</label>
+        <select id="profession" name="profession" class="funny-select">
+            <option value="developer">Developer 🖥️</option>
+            <option value="designer">Designer 🎨</option>
+            <option value="manager">Manager 📊</option>
+            <option value="student">Student 🎓</option>
+        </select><br><br>
+
+        <p>Your Hobbies:</p>
+        <label class="funny-checkbox">
+            <input type="checkbox" name="hobbies" value="books"> 📚 Books
+        </label><br>
+        <label class="funny-checkbox">
+            <input type="checkbox" name="hobbies" value="sports"> ⚽ Sports
+        </label><br>
+        <label class="funny-checkbox">
+            <input type="checkbox" name="hobbies" value="games"> 🎮 Games
+        </label><br><br>
+
+        <p>Your Level:</p>
+        <label class="funny-radio">
+            <input type="radio" name="level" value="beginner" checked> 🐣 Beginner
+        </label><br>
+        <label class="funny-radio">
+            <input type="radio" name="level" value="advanced"> 🚀 Advanced
+        </label><br><br>
+
+        <button type="submit" class="funny-button">🚀 Let's Go!</button>
+        <button type="button" class="surprise-button" onclick="showSurprise()">🎁 Нажми меня!</button>
+        <div id="surprise-message" class="surprise-message"></div>
+    </form>
+
+    <script>
+        // Обновление превью цвета
+        const colorPicker = document.getElementById('color');
+        const colorPreview = document.getElementById('color-preview');
+
+        function updateColorPreview() {
+            colorPreview.style.backgroundColor = colorPicker.value;
+            colorPreview.textContent = colorPicker.value;
+        }
+
+        colorPicker.addEventListener('input', updateColorPreview);
+        updateColorPreview(); // Инициализация
+
+        // Функция для кнопки-сюрприза
+        function showSurprise() {
+            const msg = document.getElementById('surprise-message');
+            msg.textContent = "🎉 Ты нашёл секретную кнопку! Поздравляем! 🎊";
+            msg.style.display = "block";
+            msg.style.animation = "fadeIn 1s ease-in-out";
+
+            // Убегающая кнопка (по желанию)
+            const btn = event.target;
+            btn.style.position = "relative";
+            btn.style.left = Math.random() * 200 - 100 + "px";
+            btn.style.top = Math.random() * 200 - 100 + "px";
+        }
+    </script>
+</body>
+</html>
