@@ -1,42 +1,50 @@
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, flash, redirect, url_for
 from app import app
-import random
+import re
 
-# Список случайных шуток
-JOKES = [
-    "Татарские шахматы — это когда конь ходит как слон, слон как ферзь, ферзь как король, а король просто сидит и говорит: «Син мине тынлаган иденме?» (Ты меня понимаешь?).",
-    "Татарский способ похудения — это когда ты говоришь «кил монда» (иди сюда) холодильнику, а он отвечает «син кил монда» (ты иди сюда), и в итоге ты сам отказываешься от еды из принципа.",
-    "Татарский этикет — это когда ты приходишь в гости, а хозяин говорит: «Не откажи в любезности, поешь», и ты вынужден съесть всё, потому что отказаться — значит обидеть человека, а съесть всё — значит обидеть свой желудок.",
-    "Татарский секрет долголетия — это умение одновременно есть эчпочмак, пить чай из пиалы и рассказывать истории про предков, при этом не проливая ни капли и не роняя ни кусочка.",
-    "Татарская мудрость: если ты не можешь выбрать между чаем и бульоном — бери оба, потому что настоящий татарин должен быть готов ко всему, даже к тому, что гости придут раньше, чем ты успеешь всё приготовить."
-]
+# главная страница
+@app.route('/')
+def index():
+    return render_template('index.html')
 
-@app.route("/")
-def form():
-    return render_template("form.html")
+#страница о нас
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
-@app.route("/submit", methods=["POST", "GET"])
-def submit():
-    if request.method == "POST":
-        name = request.form.get("name")
-        email = request.form.get("email")
-        color = request.form.get("color", "#ffffff")
-        profession = request.form.get("profession")
-        hobbies = request.form.getlist("hobbies")  # чекбоксы
-        level = request.form.get("level")
+# контакты — и GET, и POST
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        name = request.form.get('name', '').strip()
+        email = request.form.get('email', '').strip()
+        message = request.form.get('message', '').strip()
 
-        # Выбираем случайную шутку
-        joke = random.choice(JOKES)
+        # если ошибки
+        has_error = False
 
-        return render_template(
-            "result.html",
-            name=name,
-            email=email,
-            color=color,
-            profession=profession,
-            hobbies=hobbies,
-            level=level,
-            joke=joke
-        )
-    else:
-        return redirect(url_for("form"))
+        # проверка имени
+        if not name:
+            flash('Пожалуйста, введите имя.', 'error')
+            has_error = True
+
+        # проверка email)
+        if not email:
+            flash('Email обязателен.', 'error')
+            has_error = True
+        elif not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+            flash('Некорректный формат email.', 'error')
+            has_error = True
+
+        # проверка сообщения
+        if not message:
+            flash('Сообщение не может быть пустым.', 'error')
+            has_error = True
+
+        if not has_error:
+            # успешная отправка
+            flash('Спасибо! Ваше сообщение отправлено.', 'success')
+            return redirect(url_for('contact'))  # перенаправляем, чтобы избежать повторной отправки
+
+    # если GET или были ошибки — показываем форму
+    return render_template('contact.html')
