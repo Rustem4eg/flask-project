@@ -1,8 +1,8 @@
 from flask import Flask
 
-# создаём приложение
+# Создаём Flask-приложение
 app = Flask(__name__)
-app.secret_key = 'super-secret-key-for-flask'  # нужно для flash-сообщений
+app.secret_key = 'my-secret-key-for-flask-app'  # нужен для flash-сообщений
 
-# импортируем маршруты
+# Импортируем маршруты
 from app import routes

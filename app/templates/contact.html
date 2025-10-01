@@ -4,6 +4,21 @@
 
 {% block content %}
 <h1>Свяжитесь со мной</h1>
+
+<!-- Задание 3: отображение вложенного словаря -->
+<div class="contact-info">
+    <h2>Отдел поддержки</h2>
+    <p><strong>Контактное лицо:</strong> {{ manager.name }}</p>
+    <p><strong>Должность:</strong> {{ manager.position }}</p>
+    <p><strong>Адрес:</strong><br>
+       {{ manager.address.street }}<br>
+       {{ manager.address.city }}, {{ manager.address.zip }}
+    </p>
+</div>
+
+<hr>
+
+<!-- Форма обратной связи -->
 <form method="POST">
     <div class="form-group">
         <label for="name">Имя:</label>
