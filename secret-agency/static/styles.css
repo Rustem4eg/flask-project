@@ -1,0 +1,69 @@
+/* static/styles.css */
+/* Стили для секретного агентства — тёмная тема */
+
+body {
+    background-color: #0d0d0d;
+    color: #f0f0f0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+
+.list-group-item {
+    background-color: #222;
+    border-color: #444;
+    color: #eee;
+}
+
+.badge-secret {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.badge-topsecret {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.badge-critical {
+    background-color: #6f42c1;
+    color: #fff;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #6ed3ff;
+}
+
+a {
+    color: #4fc3f7;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ff5252;
+    text-decoration: underline;
+}
+
+.btn-outline-purple {
+    color: #d9c7ff;
+    border-color: #6f42c1;
+}
+
+.btn-outline-purple:hover {
+    background-color: #6f42c1;
+    color: white;
+}
+
+.form-label {
+    color:chartreuse;
+}
+
+.form-text.text-muted {
+    color: #6ed3ff !important;
+    font-size: 0.875rem;
+    font-style: italic;
+}
