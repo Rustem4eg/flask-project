@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Оформление заказа</h1>
+<form method="POST">
+  {{ form.hidden_tag() }}
+  <div class="mb-3">
+    {{ form.delivery_type.label(class="form-label") }}
+    {{ form.delivery_type(class="form-select") }}
+  </div>
+  <div class="mb-3">
+    {{ form.address.label(class="form-label") }}
+    {{ form.address(class="form-control", placeholder="Укажите полный адрес") }}
+  </div>
+  {{ form.submit(class="btn btn-success") }}
+  <a href="{{ url_for('main.cart') }}" class="btn btn-secondary">Назад в корзину</a>
+</form>
+{% endblock %}

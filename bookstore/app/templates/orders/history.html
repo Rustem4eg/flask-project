@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>История заказов</h1>
+{% for order in orders %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5>Заказ №{{ order.id }} от {{ order.date.strftime('%d.%m.%Y %H:%M') }}</h5>
+      <p><strong>Статус:</strong> {{ order.status }}</p>
+      <p><strong>Доставка:</strong> {{ order.delivery_type }}
+        {% if order.address %} — {{ order.address }}{% endif %}
+      </p>
+      <ul>
+        {% for item in order.items %}
+          <li>{{ item.book.title }} × {{ item.quantity }} — {{ "%.2f"|format(item.price * item.quantity) }} ₽</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% else %}
+  <p>У вас пока нет заказов.</p>
+{% endif %}
+<a href="{{ url_for('main.catalog') }}" class="btn btn-primary">Выбрать книги</a>
+{% endblock %}

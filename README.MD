@@ -2544,7 +2544,7 @@ http://127.0.0.1:5000/delete/1
 
 Для каждой задачи есть две кнопки: **Редактировать** и **Удалить**.
 
-<img src="{{ url_for('static', filename='images/16.png') }}" alt="Logo">
+<img src="{{ url_for('static', filename='app/tatic/images/16.png') }}" alt="Logo">
 
 2️⃣ **Пользователь нажимает кнопку "Добавить задачу"**  
 
